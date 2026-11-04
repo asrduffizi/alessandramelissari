@@ -1,2 +1,3 @@
-# alessandramelissari
-Sito di Alessandra Melissari, wedding &amp; event planner
+# Alessandra Melissari · Wedding Planner
+
+Sito vetrina pubblicato con GitHub Pages: https://asrduffizi.github.io/alessandramelissari/
