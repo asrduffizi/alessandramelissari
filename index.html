@@ -315,28 +315,6 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
 .sv-arrow{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:none;color:#FFFFFF;font-size:1.3rem;cursor:pointer;transition:background .25s}
 .sv-arrow:hover{background:rgba(255,255,255,.12)}
 
-/* Wedding calendar */
-.plan{background:var(--paper)}
-.plan .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,90px);align-items:start}
-.plan-ctl{display:grid;gap:22px;min-width:0;position:sticky;top:calc(100px + env(safe-area-inset-top,0px))}
-.count{display:grid;gap:6px;padding:30px 28px;background:var(--ink);color:#E9EEF4}
-.count .num{font:400 clamp(3.6rem,8vw,5.8rem)/1 var(--f-display);color:#FFFFFF;font-variant-numeric:lining-nums tabular-nums}
-.count .lbl{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:#D7BC86}
-.count .day{font:italic 400 1.2rem/1.35 var(--f-display);color:#C9D4E0;margin-top:6px}
-.date-row{display:flex;align-items:end;gap:12px;flex-wrap:wrap}
-.date-row label{flex:1 1 200px}
-.example{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid currentColor;padding:4px 8px;margin-bottom:12px}
-.tl{list-style:none;margin:0;padding:0;display:grid}
-.tl li{display:grid;grid-template-columns:118px 1fr;gap:20px;padding:22px 14px;border-top:1px solid var(--line);transition:background .4s}
-.tl li:last-child{border-bottom:1px solid var(--line)}
-.tl .when{font:italic 400 1.12rem/1.25 var(--f-display);color:var(--gold)}
-.tl h3{font-size:1.22rem;margin-bottom:6px}
-.tl p{color:var(--muted);font-size:.95rem}
-.tl .st{display:inline-block;margin-top:10px;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--line);color:var(--muted)}
-.tl li.now{background:linear-gradient(90deg,rgba(166,134,74,.13),rgba(166,134,74,0))}
-.tl li.now .st{background:var(--gold);border-color:var(--gold);color:#FFFFFF}
-.tl li.late .st{color:var(--blue);border-color:var(--blue)}
-
 /* Night motto with sparklers */
 .motto.night{background:var(--ink);position:relative;overflow:hidden;isolation:isolate}
 .motto.night canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
@@ -352,14 +330,11 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
 }
 
 @media (max-width:860px){
-  .plan .wrap{grid-template-columns:1fr}
-  .plan-ctl{position:static}
   .sv-arrow{display:none}
 }
 @media (max-width:560px){
   .hl-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 10px;justify-items:center}
   .hl{font-size:.64rem;letter-spacing:.12em}
-  .tl li{grid-template-columns:1fr;gap:4px;padding:18px 10px}
   .sv{padding:0}
   .sv-frame{height:100%;width:100%;aspect-ratio:auto;border-radius:0}
 }
@@ -378,7 +353,6 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
       <a href="#chi-sono">Chi sono</a>
       <a href="#servizi">Servizi</a>
       <a href="#matrimoni">Matrimoni</a>
-      <a href="#calendario">Calendario</a>
       <a href="#contatti" class="btn">Richiedi un incontro</a>
     </nav>
   </div>
@@ -559,29 +533,6 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
     </div>
   </section>
 
-  <section class="plan" id="calendario">
-    <div class="wrap">
-      <div class="plan-ctl">
-        <div class="head" style="margin-bottom:0">
-          <p class="eyebrow">Il vostro calendario</p>
-          <h2>Quanto manca al vostro sì?</h2>
-          <p class="lead">Inserite la data che sognate: vi mostro cosa fare adesso e cosa può aspettare.</p>
-        </div>
-        <div class="date-row">
-          <label for="f-cal">Data del matrimonio<input type="date" id="f-cal" name="cal"></label>
-          <span class="example" id="calEx">Data di esempio</span>
-        </div>
-        <div class="count" aria-live="polite">
-          <span class="lbl" id="calLbl">Giorni al vostro sì</span>
-          <span class="num" id="calNum">–</span>
-          <span class="day" id="calDay"></span>
-        </div>
-        <a class="btn" href="#contatti" id="calCta">Fissiamo un incontro per questa data</a>
-      </div>
-      <ol class="tl" id="calTl"></ol>
-    </div>
-  </section>
-
   <section class="motto night" id="motto">
     <canvas id="sparks" aria-hidden="true"></canvas>
     <div class="wrap">
@@ -641,7 +592,6 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
       <a href="#chi-sono">Chi sono</a>
       <a href="#servizi">Servizi</a>
       <a href="#matrimoni">Matrimoni</a>
-      <a href="#calendario">Calendario</a>
       <a href="#contatti">Contatti</a>
       <a href="https://www.instagram.com/alessandramelissari_events/" target="_blank" rel="noopener">Instagram</a>
     </nav>
@@ -776,48 +726,6 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
     sv.addEventListener('touchend',function(e){if(ty!==null&&e.changedTouches[0].clientY-ty>90)close();ty=null});
   })();
 
-  // Wedding calendar
-  (function(){
-    var inp=document.getElementById('f-cal');if(!inp)return;
-    var M=[
-      [99,12,'12 mesi o più','Budget, ospiti e location','Definite budget e numero di ospiti, poi bloccate la location: le ville più richieste sul lago si prenotano con un anno di anticipo.'],
-      [12,10,'10–12 mesi','Fotografo, video e musica','I professionisti migliori hanno il calendario pieno presto. Scegliamo insieme chi racconterà il vostro giorno.'],
-      [10,8,'8–10 mesi','Abito e save the date','Le prove dell’abito richiedono diversi mesi. È anche il momento di avvisare gli ospiti, soprattutto chi viene da lontano.'],
-      [8,6,'6–8 mesi','Fiori, menù e partecipazioni','Definiamo lo stile degli allestimenti, degustiamo il menù e ordiniamo le partecipazioni.'],
-      [6,4,'4–6 mesi','Rito, confettata e viaggio','Documenti per il rito civile o religioso, bomboniere e confettata, prenotazione del viaggio di nozze.'],
-      [4,2,'2–4 mesi','Inviti e prove','Spedite gli inviti, prova trucco e acconciatura, scelta del tableau e degli effetti speciali.'],
-      [2,.25,'Ultimo mese','Conferme e tavoli','Raccogliamo le conferme, disponiamo i tavoli e facciamo l’ultima prova dell’abito.'],
-      [.25,0,'L’ultima settimana','La scaletta del giorno','Consegno a ogni fornitore la timeline minuto per minuto. Voi pensate solo a godervelo.']
-    ];
-    var tl=document.getElementById('calTl'),num=document.getElementById('calNum'),lbl=document.getElementById('calLbl'),day=document.getElementById('calDay'),ex=document.getElementById('calEx'),cta=document.getElementById('calCta');
-    tl.innerHTML=M.map(function(m){return '<li><span class="when">'+m[2]+'</span><div><h3>'+m[3]+'</h3><p>'+m[4]+'</p><span class="st"></span></div></li>'}).join('');
-    var lis=[].slice.call(tl.children);
-    function pad(n){return (n<10?'0':'')+n}
-    function iso(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
-    var today=new Date();today.setHours(0,0,0,0);
-    var exd=new Date(today);exd.setMonth(exd.getMonth()+10);while(exd.getDay()!==6)exd.setDate(exd.getDate()+1);
-    inp.value=iso(exd);inp.min=iso(today);
-    var fmt=function(d){try{return d.toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}catch(e){return iso(d)}};
-    function update(){
-      var p=inp.value.split('-');if(p.length!==3){return}
-      var d=new Date(+p[0],+p[1]-1,+p[2]);var days=Math.round((d-today)/864e5);
-      var nice=fmt(d);
-      if(days<0){num.textContent='♥';lbl.textContent='Il grande giorno è passato';day.textContent='Auguri per il '+nice+'!'}
-      else if(days===0){num.textContent='Oggi';lbl.textContent='È il vostro giorno';day.textContent='Auguri, e godetevi ogni momento.'}
-      else{num.textContent=days.toLocaleString('it-IT');lbl.textContent=days===1?'Giorno al vostro sì':'Giorni al vostro sì';day.textContent=nice.charAt(0).toUpperCase()+nice.slice(1)}
-      var ml=days/30.44;
-      lis.forEach(function(li,k){var m=M[k],st=li.querySelector('.st');li.className='';
-        if(ml>m[0]){st.textContent='Più avanti'}
-        else if(ml>=m[1]){li.className='now';st.textContent='Adesso'}
-        else{li.className='late';st.textContent=days<0?'Fatto':'Da recuperare'}
-      });
-      var f=document.getElementById('f-data');
-      cta.onclick=function(){if(f){f.value=d.toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'});f.dispatchEvent(new Event('input'))}};
-    }
-    inp.addEventListener('input',function(){ex.hidden=true;update()});
-    inp.addEventListener('change',function(){ex.hidden=true;update()});
-    update();
-  })();
 
   // Sparklers (fontane luminose)
   (function(){
@@ -845,7 +753,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
   // Scroll motion
   (function(){
     if(RM||!('IntersectionObserver' in window))return;
-    var els=document.querySelectorAll('.head, .svc article, .steps li, .gallery figure, .strip figure, .about figure, .tl li, .hl, .story .txt');
+    var els=document.querySelectorAll('.head, .svc article, .steps li, .gallery figure, .strip figure, .about figure, .hl, .story .txt');
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
     [].forEach.call(els,function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight){return}el.classList.add('rv');io.observe(el)});
     var pics=[].slice.call(document.querySelectorAll('.story .pics img')),mini=document.querySelector('.hero-art .mini'),tick=false;
