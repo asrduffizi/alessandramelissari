@@ -20,10 +20,12 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Alessandra Melissari Wedding Planner", "description": "Alessandra Melissari, wedding & event planner da 17 anni. Matrimoni su misura a Roma, ai Castelli Romani e sul lago di Castel Gandolfo.", "telephone": "+39 327 834 3071", "email": "alessandramelissari@weddingplanner.work", "url": "https://asrduffizi.github.io/alessandramelissari/", "image": "https://asrduffizi.github.io/alessandramelissari/img/og.jpg", "logo": "https://asrduffizi.github.io/alessandramelissari/img/icon-192.png", "areaServed": ["Roma", "Castelli Romani", "Castel Gandolfo"], "sameAs": ["https://www.instagram.com/alessandramelissari_events/"], "knowsAbout": ["Wedding planning", "Wedding design", "Riti simbolici", "Eventi privati"]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Hanken+Grotesk:wght@300..600&display=swap">
+<link rel="preload" href="fonts/bodoni-moda-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:"Bodoni Moda";font-style:normal;font-weight:400 900;font-display:swap;src:url("fonts/bodoni-moda-latin-standard-normal.woff2") format("woff2")}
+@font-face{font-family:"Bodoni Moda";font-style:italic;font-weight:400 900;font-display:swap;src:url("fonts/bodoni-moda-latin-standard-italic.woff2") format("woff2")}
+@font-face{font-family:"Hanken Grotesk";font-style:normal;font-weight:100 900;font-display:swap;src:url("fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2")}
 html,body{margin:0}[hidden]{display:none!important}
 /* Layout: an invitation suite — arched frames, gold rules, album-like spreads that alternate sides */
 :root{
@@ -209,6 +211,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 
 textarea{min-height:110px;resize:vertical}
 .form-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .form-note{grid-column:1/-1;font-size:.82rem;color:var(--muted)}
+.form-note a{color:var(--blue);text-underline-offset:3px}
 .toast{font-size:.82rem;color:var(--gold)}
 
 /* Footer */
@@ -219,6 +222,7 @@ footer .brand small{color:#D7BC86}
 footer nav{display:flex;flex-wrap:wrap;gap:22px}
 footer a{text-decoration:none}
 footer a:hover{color:#FFFFFF}
+footer .fine a{text-decoration:underline;text-underline-offset:3px}
 footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.78rem;color:#7F90A5}
 
 /* Lightbox */
@@ -484,7 +488,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
           <button class="btn ghost" type="button" id="copyreq">Copia il testo per email</button>
           <span class="toast" id="toast" aria-live="polite"></span>
         </div>
-        <p class="form-note">Il messaggio si apre su WhatsApp già compilato: controllatelo e premete invio.</p>
+        <p class="form-note">Il messaggio si apre su WhatsApp già compilato: controllatelo e premete invio. Il sito non conserva i dati inseriti. <a href="privacy.html">Informativa privacy</a></p>
       </form>
     </div>
   </section>
@@ -504,7 +508,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding
       <a href="https://www.instagram.com/alessandramelissari_events/" target="_blank" rel="noopener">Instagram</a>
     </nav>
     <div class="fine">
-      <span>© 2026 Alessandra Melissari · Wedding planner a Roma e Castelli Romani</span>
+      <span>© 2026 Alessandra Melissari · Wedding planner a Roma e Castelli Romani · P.IVA 00000000000 · <a href="privacy.html">Privacy</a></span>
       <span>Foto: Scatti d’Autore e fornitori partner</span>
     </div>
   </div>
